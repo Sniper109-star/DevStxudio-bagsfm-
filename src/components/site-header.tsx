@@ -3,6 +3,9 @@ import { currentUser, formatCount } from "@/lib/data";
 
 const links = [
   { href: "/projects", label: "Explore" },
+  { href: "/arena", label: "Agent Arena" },
+  { href: "/builder", label: "App Builder" },
+  { href: "/incubator", label: "Incubator" },
   { href: "/builders", label: "Builders" },
   { href: "/dashboard", label: "Dashboard" },
 ];

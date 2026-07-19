@@ -295,3 +295,122 @@ export function formatDate(iso: string): string {
     year: "numeric",
   });
 }
+
+/* ------------------------------------------------------------------ */
+/* AI Agent Arena (poker focus)                                        */
+/* ------------------------------------------------------------------ */
+
+export type PokerFormat = "6-max" | "heads-up" | "tournament";
+
+export type AgentEntry = {
+  id: string;
+  name: string;
+  builderId: string;
+  format: PokerFormat;
+  handsPlayed: number;
+  winRate: number; // BB/100
+  rank: number;
+  rating: number; // elo
+  prizeWon: number; // USD
+  accent: string;
+};
+
+export type ArenaMatch = {
+  id: string;
+  title: string;
+  format: PokerFormat;
+  agentA: string;
+  agentB: string;
+  hands: number;
+  pool: number; // USD
+  status: "live" | "open" | "finished";
+  result?: string;
+};
+
+export const arenaFormats: {
+  id: PokerFormat;
+  label: string;
+  desc: string;
+}[] = [
+  { id: "6-max", label: "6-Max NLHE", desc: "Six agents, imperfect info, full ring chaos." },
+  { id: "heads-up", label: "Heads-Up Ladder", desc: "One-on-one grinds to climb the ranks." },
+  { id: "tournament", label: "Tournaments", desc: "Burst prizepools with sponsored buy-ins." },
+];
+
+export const arenaAgents: AgentEntry[] = [
+  { id: "a1", name: "DeepStack-X", builderId: "b3", format: "6-max", handsPlayed: 184200, winRate: 14.2, rank: 1, rating: 2140, prizeWon: 12840, accent: "from-sky-500 to-indigo-500" },
+  { id: "a2", name: "MonadGrinder", builderId: "b5", format: "6-max", handsPlayed: 161900, winRate: 12.8, rank: 2, rating: 2095, prizeWon: 9670, accent: "from-emerald-500 to-teal-500" },
+  { id: "a3", name: "BluffNet", builderId: "b2", format: "heads-up", handsPlayed: 94200, winRate: 18.6, rank: 3, rating: 2051, prizeWon: 8120, accent: "from-pink-500 to-rose-500" },
+  { id: "a4", name: "PotOdds-Pro", builderId: "b4", format: "6-max", handsPlayed: 133400, winRate: 9.4, rank: 4, rating: 1988, prizeWon: 5340, accent: "from-amber-500 to-orange-500" },
+  { id: "a5", name: "HoleCard-HL", builderId: "b1", format: "heads-up", handsPlayed: 71500, winRate: 11.1, rank: 5, rating: 1910, prizeWon: 4200, accent: "from-violet-500 to-fuchsia-500" },
+  { id: "a6", name: "AllIn-AI", builderId: "b6", format: "tournament", handsPlayed: 58800, winRate: 7.7, rank: 6, rating: 1844, prizeWon: 3110, accent: "from-teal-500 to-cyan-500" },
+];
+
+export const arenaMatches: ArenaMatch[] = [
+  { id: "m1", title: "Monad Sponsored Classic", format: "6-max", agentA: "DeepStack-X", agentB: "MonadGrinder", hands: 5000, pool: 10000, status: "live" },
+  { id: "m2", title: "HU Ladder Finals", format: "heads-up", agentA: "BluffNet", agentB: "HoleCard-HL", hands: 2000, pool: 2500, status: "live" },
+  { id: "m3", title: "Spring Open", format: "tournament", agentA: "PotOdds-Pro", agentB: "AllIn-AI", hands: 12000, pool: 15000, status: "open" },
+  { id: "m4", title: "Grinders Cup #42", format: "6-max", agentA: "MonadGrinder", agentB: "PotOdds-Pro", hands: 8000, pool: 6000, status: "finished", result: "MonadGrinder +842 BB" },
+];
+
+/* ------------------------------------------------------------------ */
+/* AI-Powered App Builder / Launcher                                  */
+/* ------------------------------------------------------------------ */
+
+export type AppTemplate = {
+  id: string;
+  prompt: string;
+  name: string;
+  category: string;
+  linkedToken?: string;
+  buildSeconds: number;
+  accent: string;
+};
+
+export const appTemplates: AppTemplate[] = [
+  { id: "t1", prompt: "A meme generator for my coin", name: "MemeForge", category: "Social", linkedToken: "$MEME", buildSeconds: 38, accent: "from-pink-500 to-rose-500" },
+  { id: "t2", prompt: "A trading dashboard with live charts", name: "ChartDeck", category: "DeFi", linkedToken: "$DECK", buildSeconds: 52, accent: "from-sky-500 to-indigo-500" },
+  { id: "t3", prompt: "An on-chain tipping game", name: "TipArcade", category: "Game", linkedToken: "$TIP", buildSeconds: 44, accent: "from-emerald-500 to-teal-500" },
+  { id: "t4", prompt: "A community airdrop claim page", name: "ClaimDrop", category: "Community", linkedToken: "$DROP", buildSeconds: 29, accent: "from-amber-500 to-orange-500" },
+  { id: "t5", prompt: "A token-gated content vault", name: "GateVault", category: "Tooling", linkedToken: "$VAULT", buildSeconds: 47, accent: "from-violet-500 to-fuchsia-500" },
+];
+
+export const appBuilderFeatures = [
+  "Natural language prompts — describe it, we build it",
+  "Deploy & publish in under a minute, no code required",
+  "Link apps to pump.fun tokens for trading & community",
+  "On-chain actions: Solana transactions, wallets, claims",
+  "Custom backend logic, viral tools, and mini-games",
+  "Rapid prototyping for consumer crypto apps",
+];
+
+/* ------------------------------------------------------------------ */
+/* Project Incubator & IPO / Launch Tools                             */
+/* ------------------------------------------------------------------ */
+
+export type IncubatorProject = {
+  id: string;
+  name: string;
+  coin: string;
+  tagline: string;
+  apps: number;
+  raised: number; // USD
+  status: "incubating" | "ipo" | "live";
+  vesting: string;
+  builderId: string;
+  accent: string;
+};
+
+export const incubatorProjects: IncubatorProject[] = [
+  { id: "i1", name: "Nebula Labs", coin: "$NEB", tagline: "Consumer app suite bundled under one tradable coin", apps: 4, raised: 420000, status: "live", vesting: "12% TGE / 6mo linear", builderId: "b1", accent: "from-violet-500 to-fuchsia-500" },
+  { id: "i2", name: "BlockForge", coin: "$FORGE", tagline: "Incubator-backed builder tooling ecosystem", apps: 3, raised: 180000, status: "ipo", vesting: "15% TGE / 9mo linear", builderId: "b3", accent: "from-emerald-500 to-teal-500" },
+  { id: "i3", name: "PixelUnion", coin: "$PXU", tagline: "On-chain games + social apps for one community", apps: 5, raised: 0, status: "incubating", vesting: "TBD", builderId: "b4", accent: "from-amber-500 to-orange-500" },
+  { id: "i4", name: "SignalStack", coin: "$SIG", tagline: "ML tooling wrapped as a tradable asset", apps: 2, raised: 260000, status: "ipo", vesting: "10% TGE / 12mo linear", builderId: "b5", accent: "from-sky-500 to-indigo-500" },
+];
+
+export const incubatorSteps = [
+  { step: "01", title: "Bundle your apps", body: "Group multiple apps under one brand and coin to form an on-chain business." },
+  { step: "02", title: "Incubator support", body: "Get technical help and distribution reach from the studio incubator." },
+  { step: "03", title: "Launch your IPO", body: "Run a pump.fun IPO with vesting that aligns creators, users & traders." },
+  { step: "04", title: "Go tradable", body: "Your idea becomes a tradable asset in a consumer crypto app ecosystem." },
+];

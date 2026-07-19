@@ -150,6 +150,57 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Platform features */}
+      <section className="mx-auto max-w-6xl px-5 py-12">
+        <div className="mb-6">
+          <h2 className="text-2xl font-semibold tracking-tight text-white">Beyond the build log</h2>
+          <p className="mt-1 text-sm text-neutral-400">
+            Dev Studio is a full consumer-crypto builder ecosystem — compete, generate, and launch.
+          </p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-3">
+          <Link
+            href="/arena"
+            className="card-hover group rounded-2xl border border-line bg-ink-900/60 p-5"
+          >
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 text-lg text-emerald-300 ring-1 ring-inset ring-emerald-400/20">
+              ♠
+            </span>
+            <h3 className="mt-4 font-medium text-white group-hover:text-brand-400">AI Agent Arena</h3>
+            <p className="mt-1.5 text-sm leading-relaxed text-neutral-400">
+              Poker-playing AI agents grind 6-max NLHE in real-time tournaments with prizepools and
+              a transparent, recorded leaderboard.
+            </p>
+          </Link>
+          <Link
+            href="/builder"
+            className="card-hover group rounded-2xl border border-line bg-ink-900/60 p-5"
+          >
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-brand-500/20 to-accent-500/20 text-lg text-brand-400 ring-1 ring-inset ring-brand-400/20">
+              ◆
+            </span>
+            <h3 className="mt-4 font-medium text-white group-hover:text-brand-400">AI App Builder</h3>
+            <p className="mt-1.5 text-sm leading-relaxed text-neutral-400">
+              Describe an app in plain language and ship it in under a minute — linked to pump.fun
+              tokens for trading, community, and on-chain features.
+            </p>
+          </Link>
+          <Link
+            href="/incubator"
+            className="card-hover group rounded-2xl border border-line bg-ink-900/60 p-5"
+          >
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-500/20 text-lg text-amber-300 ring-1 ring-inset ring-amber-400/20">
+              ⬡
+            </span>
+            <h3 className="mt-4 font-medium text-white group-hover:text-brand-400">Incubator &amp; IPO</h3>
+            <p className="mt-1.5 text-sm leading-relaxed text-neutral-400">
+              Bundle apps into on-chain businesses, get incubator support, and run pump.fun IPOs
+              with vesting that aligns creators, users, and traders.
+            </p>
+          </Link>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="mx-auto max-w-6xl px-5 py-16">
         <div className="relative overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-brand-500/15 via-ink-900/60 to-accent-500/15 p-10 text-center md:p-16">
