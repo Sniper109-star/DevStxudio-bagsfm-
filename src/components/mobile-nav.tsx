@@ -10,6 +10,7 @@ const links = [
   { href: "/builder", label: "Builder" },
   { href: "/incubator", label: "Incubator" },
   { href: "/builders", label: "Builders" },
+  { href: "/github", label: "GitHub Finder" },
   { href: "/dashboard", label: "Studio" },
 ];
 

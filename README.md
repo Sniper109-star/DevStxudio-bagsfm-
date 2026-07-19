@@ -17,6 +17,7 @@ A private atelier for public builders — a members' platform for developers who
 - **Incubator & IPO** — Bundle apps into on-chain houses, run pump.fun IPOs with vesting
 - **Builders** — Directory of builders ranked by followers, with stack chips and project previews
 - **Studio** — Personal dashboard for managing projects, tracking stats, and posting updates
+- **GitHub Finder** — Search public GitHub repositories by name, topic, or owner
 
 ## Tech Stack
 
@@ -85,6 +86,8 @@ src/
     builder/page.tsx        AI App Builder
     incubator/page.tsx      Incubator & IPO
     live/page.tsx           Live Build Feed
+    github/
+      page.tsx              GitHub Repository Finder
     globals.css             Tailwind theme tokens, utilities, animations
   components/
     site-header.tsx         Sticky nav
@@ -98,8 +101,11 @@ src/
     app-builder-demo.tsx    Interactive builder demo (client)
     mobile-nav.tsx          Mobile slide-out menu (client)
     mobile-bottom-nav.tsx   Mobile bottom tab bar (client)
+    github-repo-finder.tsx  GitHub repository search (client)
+    token-badge.tsx         Solana token badge with logo (client)
   lib/
     data.ts                 Mock data, types, and helpers
+    solana.ts               Solana token registry + web3.js utilities
 ```
 
 ## Design System
@@ -129,13 +135,26 @@ src/
 | `bun lint` | Run ESLint |
 | `bun typecheck` | Run TypeScript compiler (no emit) |
 
+## CI/CD
+
+GitHub Actions runs on every push and pull request to `main`:
+
+- **Lint** — `bun lint`
+- **Typecheck** — `bun typecheck`
+- **Build** — `npx next build`
+
+On pull requests, a preview deployment is published. On pushes to `main`, a production deployment is published.
+
+Workflow file: `.github/workflows/ci.yml`
+
 ## Contributing
 
 1. Create a feature branch from `main`
 2. Make your changes
-3. Ensure `bun typecheck` and `bun lint` pass
-4. Commit with a descriptive message
-5. Push and open a pull request
+3. Ensure `bun typecheck` and `bun lint` pass locally
+4. Ensure the GitHub Actions CI checks pass on your PR
+5. Commit with a descriptive message
+6. Push and open a pull request
 
 ## License
 
